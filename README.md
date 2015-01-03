@@ -1,10 +1,8 @@
 # Paranoid42
 
-[paranoid2](https://github.com/anjlab/paranoid2) ideas (and code) adapted for rails 4.2
+Retain soft-deleting functionality without losing AdequateRecord's speed improvements. A fork of [paranoid2](https://github.com/anjlab/paranoid2).
 
-Rails 4.2 introduced adequate record, but in order to take advantage of the improvements, default_scope can't be used. Paranoid42 removes the default scope from Paranoid2. This means you have to be explicit about telling your app not to return deleted records.
-
-Paranoid42 removes the default scope and adds a new `not_deleted` method to your paranoid classes.
+Rails 4.2 introduced adequate record, but in order to take advantage of the improvements, default_scope can't be used ([Release Notes](http://edgeguides.rubyonrails.org/4_2_release_notes.html)). Paranoid42 removes the default scope, and adds a new `not_deleted` method to your paranoid classes ([Benchmarks](https://gist.github.com/effektz/f18e1be522a328a981b9)).
 
 So this:
 
@@ -29,12 +27,6 @@ def active
   not_deleted
 end
 ```
-
-[Benchmarks](https://gist.github.com/effektz/f18e1be522a328a981b9)
-
-## Paranoid2
-
-Rails 4 defines `ActiveRecord::Base#destroy!` so `Paranoid42` gem use `force: true` arg to force destroy.
 
 ## Installation
 
