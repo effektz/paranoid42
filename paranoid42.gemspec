@@ -6,10 +6,10 @@ require 'paranoid42/version'
 Gem::Specification.new do |gem|
   gem.name          = "paranoid42"
   gem.version       = Paranoid42::VERSION
-  gem.authors       = ["effektz", "nitsujw", "yury"]
-  gem.email         = ["alexweidmann@gmail.com", "nitsujweidmann@gmail.com", "yury.korolev@gmail.com"]
-  gem.description   = %q{paranoid models for rails 4.2}
-  gem.summary       = %q{paranoid models for rails 4.2}
+  gem.authors       = ["effektz", "nitsujw"]
+  gem.email         = ["alexweidmann@gmail.com", "nitsujweidmann@gmail.com"]
+  gem.description   = %q{Paranoid soft deleting for Rails 4.2}
+  gem.summary       = %q{Paranoid soft deleting for Rails 4.2}
   gem.homepage      = "https://github.com/effektz/paranoid42"
   gem.license       = "MIT"
 

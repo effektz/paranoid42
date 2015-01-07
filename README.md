@@ -28,6 +28,8 @@ def active
 end
 ```
 
+Counter Caches have also been tied into Paranoid42. Soft-deleting a record will decrement the association counter cache, and recovering a record will incremenet the association counter cache.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -65,11 +67,11 @@ c = Client.find(params[:id])
 # will set destroyed_at time
 c.destroy
 
-# will restore object and all it's associations
-c.restore
+# will recover object and all it's associations
+c.recover
 
-# will restore only this object without it's associations
-c.restore(associations: false)
+# will recover only this object without it's associations
+c.recover(associations: false)
 
 # will destroy object for real
 c.destroy(force: true)

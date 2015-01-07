@@ -70,12 +70,12 @@ describe Paranoid42 do
       model.only_deleted.wont_include b
     end
 
-    it 'restores' do
+    it 'recovers' do
       a = model.create
       a.destroy
       a.must_be :destroyed?
       b = model.only_deleted.find(a.id)
-      b.restore
+      b.recover
       b.reload
       b.wont_be :destroyed?
     end
@@ -137,7 +137,7 @@ describe Paranoid42 do
       employee.employers.not_deleted.count.must_equal 1
     end
 
-    it 'restores has_many associations' do
+    it 'recovers has_many associations' do
       parent = ParentModel.create
       a = model.create(parent_model: parent)
       parent.destroy
@@ -145,20 +145,20 @@ describe Paranoid42 do
       parent.must_be :destroyed?
       a.must_be :destroyed?
       parent = ParentModel.unscoped.find(parent.id)
-      parent.restore
+      parent.recover
       a.reload
       parent.wont_be :destroyed?
       a.wont_be :destroyed?
     end
 
-    it 'restores belongs_to associations' do
+    it 'recovers belongs_to associations' do
       parent = ParentModel.create
       a = model.create(parent_model: parent)
       parent.destroy
       a.reload
       parent.must_be :destroyed?
       a.must_be :destroyed?
-      a.restore
+      a.recover
       a.wont_be :destroyed?
       a.parent_model.wont_be :destroyed?
     end
@@ -190,7 +190,7 @@ describe Paranoid42 do
     end
 
     it 'validates uniqueness with scope' do
-      a = model.create!(name: 'yury', phone: '9106701550')
+      a = model.create!(name: 'yury', phone: '3034207100')
       b = model.create(name: 'effektz', phone: '3034207100')
       b.wont_be :valid?
       a.destroy
